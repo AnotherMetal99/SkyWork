@@ -43,7 +43,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function GetImage(){
-      return "https://www.gravatar.com/avatar/{{md5($this->email}}?d=mm&s50";
+    public function GetImage()
+    {
+        return "https://www.gravatar.com/avatar/{{md5($this->email}}?d=mm&s50";
+    }
+
+    # устанавливаем отношение многие ко многим, мои друзья
+    public function Follower()
+    {
+        return $this->belongsToMany('App\Models\User', 'friends', 'user_id', 'friend_id');    
+    }
+
+    # устанавливаем отношение многие ко многим, друг
+    public function Unfollower() {
+        return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
+    }
+
+    # получить друзей
+    public function friends()
+    {
+        return $this->Follower()->wherePivot('accepted', true)->get()
+           ->merge( $this->Unfollower()->wherePivot('accepted', true)->get() );
     }
 }
