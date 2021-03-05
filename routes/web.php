@@ -34,7 +34,10 @@ Route::post('/signin', [AuthController::class,'PostSignIn'])->middleware('guest'
 Route::get('/signout', [AuthController::class,'GetSignOut'])->name('auth.signout');
 
 /*Страница друзья*/
-Route::get('/friends', [FriendController::class,'GetIndex'])->middleware('auth')->name('friends');
+Route::get('/friends', [FriendController::class,'GetIndex'])->middleware('auth')->name('friends.index');
+Route::get('/friends/add/{username}', [FriendController::class,'GetAdd'])->middleware('auth')->name('friends.add');
+
+Route::get('/friends/accept/{username}', [FriendController::class,'GetAccept'])->middleware('auth')->name('friends.accept');
 
 /*Страницы пользователей*/
 Route::get('/user/{username}', [ProfileController::class,'GetProfile'])->name('profile.index');

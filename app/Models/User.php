@@ -48,6 +48,11 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/{{md5($this->email}}?d=mm&s50";
     }
 
+    public function UserName() 
+    {
+        return $this->first_name ?: $this->username;
+    }
+
     # устанавливаем отношение многие ко многим, мои друзья
     public function Follower()
     {
@@ -65,4 +70,46 @@ class User extends Authenticatable
         return $this->Follower()->wherePivot('accepted', true)->get()
            ->merge( $this->Unfollower()->wherePivot('accepted', true)->get() );
     }
+
+    public function FriendFollow()
+    {
+        return $this->Follower()->wherePivot('accepted', false)->get();
+    }
+    # запрос на ожидание друга 
+    public function FriendPending()
+    {
+        return $this->Unfollower()->wherePivot('accepted', false)->get();
+    }
+
+    # запрос на добавление в друзья
+    public function AddFriendPending(User $user)
+    {
+        return (bool) $this->FriendPending()->where('id', $user->id)->count();
+    }
+
+    # получить запрос о дружбе
+    public function FriendReceived(User $user)
+    {
+        return (bool) $this->FriendFollow()->where('id', $user->id)->count();
+    }
+
+    # добавить друга
+    public function AddFriend(User $user)
+    {
+        $this->Unfollower()->attach($user->id);
+    }
+
+    # принять запрос дружбы
+    public function AcceptFriend(User $user)
+    {
+        $this->FriendFollow()->where('id', $user->id)->first()->pivot->update([
+            'accepted' => true
+        ]);
+    }
+    # дружбa
+    public function isFriend(User $user)
+    {
+      return (bool) $this->friends()->where('id', $user->id)->count();
+    }
+
 }

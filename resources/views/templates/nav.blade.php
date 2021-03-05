@@ -10,7 +10,7 @@
 
     @if ( Auth::check() )
     <a class="nav-link active " href="{{route('home')}}">Home</a>
-    <a class="nav-link active" href="{{route('friends')}}">Friends</a>
+    <a class="nav-link active" href="{{route('friends.index')}}">Friends</a>
     <a class="nav-link active" href="{{ route('profile.index',['username' => Auth::user()->username ]) }}">{{ config('app.name') }}</a>
     <a class="nav-link active" href="{{route('profile.edit')}}">Обновить профиль</a>
     @else
