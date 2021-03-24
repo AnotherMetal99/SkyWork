@@ -1,0 +1,248 @@
+@include(resources_path('css/reset.css'))
+/*Обнуление*/
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+
+/*--------------------*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    min-height: 100%;
+    /* оболочка на всю высоту экрана */
+    overflow: hidden;
+    /* ничего за экрана не вылезло */
+    display: flex;
+    /* делаем флекс контейнер и элементы */
+    flex-direction: column;
+    /* переворачиваем флекс элементы*/
+}
+
+.content {
+    flex: 1 1 auto;
+    /* увеличиваем контент для опускания футер вниз*/
+    background: linear-gradient(180deg, #3C75AA 0%, rgba(210, 139, 156, 0.35) 100%), #818181;
+}
+
+.el1 {
+    background-color: rgb(243, 243, 243);
+}
+
+.el1_list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.el1_list a {
+    text-decoration: none;
+    color: black;
+    max-width: 100%;
+    margin-right: 1rem;
+}
+
+.el1-item:first-child {
+    margin-right: auto;
+    margin-left: 1rem;
+}
+
+.el1-item:nth-child(2) {
+    margin-left: 0.4rem;
+}
+
+.el1-item:last-child {
+    margin-right: 0.5rem;
+}
+
+.el1-item img {
+    height: 3rem;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.container {
+    margin: 0px auto;
+    /* выравнивание по центру */
+}
+
+.sign {
+    display: flex;
+    height: 450px;
+    width: 45%;
+    /* border: 1px solid black; */
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px 0px 0px 10px;
+}
+
+.form h2 {
+    padding: 4%;
+    font-size: 150%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.box {
+    width: 65%;
+    padding: 1%;
+    margin: 1%;
+    border: 1px solid darkcyan;
+    outline: none;
+    border-radius: 10px;
+}
+
+#submit {
+    padding: 12 px 30px;
+    width: 40%;
+    height: 5%;
+    margin-top: 40px;
+    background-color: darkred;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background-color: tomato;
+}
+
+.form a {
+    text-decoration: none;
+    color: black;
+    margin-top: 20px;
+}
+
+.form a:hover {
+    color: tomato;
+}
+
+.side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background: linear-gradient(180deg, #447FD8 0%, #9C848C 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+    border-radius: 0px 10px 10px 0px;
+}
+
+.side img {
+    width: 80%;
+}
+
+.footer {
+    background-color: rgb(106, 108, 138);
+}
+
+.fotter_row {
+    display: flex;
+    height: 65px;
+    justify-content: center;
+    /* выравнивание по  horizon */
+    align-items: center;
+    /* выравнивание по  vertical*/
+}
+
+.fotter_text {}

@@ -48,6 +48,11 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/{{md5($this->email}}?d=mm&s50";
     }
 
+    public function statuses()
+    {
+        return $this->hasMany('App\Models\Status','user_id');
+    }
+
     public function UserName() 
     {
         return $this->first_name ?: $this->username;
@@ -97,6 +102,12 @@ class User extends Authenticatable
     public function AddFriend(User $user)
     {
         $this->Unfollower()->attach($user->id);
+    }
+    # удалить друга
+    public function DeleteFriend(User $user)
+    {
+        $this->Unfollower()->detach($user->id);
+        $this->Follower()->detach($user->id);
     }
 
     # принять запрос дружбы
